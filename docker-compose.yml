@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: viio-frontend
+    restart: always
+    build: ./frontend
+    ports:
+      - 3000:5173
+    links:
+      - backend
+    volumes:
+      - ./frontend:/frontend
+  
+  backend:
+    container_name: viio-backend
+    restart: always
+    build: ./backend
+    ports:
+      - "8080:8080"
+    links:
+      - mongo
+    volumes:
+      - ./backend:/backend
+
+  mongo:
+    container_name: viio-database
+    image: mongo
+    ports:
+      - "27017:27017"
