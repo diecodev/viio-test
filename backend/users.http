@@ -1,0 +1,29 @@
+### LOGIN USER
+POST http://localhost:8080/user/sign-in HTTP/1.1
+content-type: application/json
+
+{
+    "email": "diego@email.com",
+    "password": "diego123"
+}
+
+### SIGN UP USER
+POST http://localhost:8080/user/sign-up HTTP/1.1
+content-type: application/json
+
+{
+    "email": "diego@email.com",
+    "password": "diego123"
+}
+
+### SIGN OUT USER
+POST http://localhost:8080/user/sign-out HTTP/1.1
+content-type: application/json
+Cookie:  user-tk=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNJZCI6IjY1NTZjZjIxNjkzZGNlNGIxZTBjNzA4ZCJ9.TqDtRIoDtiiN0aSOF-8ESuNI6u1ZcvPOTvzsqg10k1M
+
+{
+    "email": "diego@email.com",
+    "password": "diego123"
+}
+
+
