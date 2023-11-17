@@ -71,5 +71,5 @@ router.post("/sign-up", validateUserCredentials, async (c) => {
   const token = await sign({ publicId: insertedId }, secret);
 
   setCookie(c, cookie, token);
-  return c.json({ success: true }, 200);
+  return c.json({ success: true }, 201);
 });
