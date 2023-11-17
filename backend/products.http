@@ -1,0 +1,14 @@
+### Get all products
+GET http://localhost:8080/products HTTP/1.1
+content-type: application/json
+Cookie:  user-tk=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNJZCI6IjY1NTZjZjIxNjkzZGNlNGIxZTBjNzA4ZCIsImV4cCI6MTcwMDE5NTEwMCwibmJmIjoxNzAwMTk1MDM1LCJpYXQiOjE3MDAxOTUwOTV9.TDc5LZ_pfbLxOt8hh0iZIHasDBjYP4thE98k63hmglQ
+
+### Get a limited list of products
+GET http://localhost:8080/products?limit=10 HTTP/1.1
+content-type: application/json
+Cookie:  user-tk=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNJZCI6IjY1NTZjZjIxNjkzZGNlNGIxZTBjNzA4ZCIsImV4cCI6MTcwMDE5NTEwMCwibmJmIjoxNzAwMTk1MDM1LCJpYXQiOjE3MDAxOTUwOTV9.TDc5LZ_pfbLxOt8hh0iZIHasDBjYP4thE98k63hmglQ
+
+### Get a limited list of products and skip somes
+GET http://localhost:8080/products?limit=10&skip=5 HTTP/1.1
+content-type: application/json
+Cookie:  user-tk=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNJZCI6IjY1NTZjZjIxNjkzZGNlNGIxZTBjNzA4ZCIsImV4cCI6MTcwMDE5NTEwMCwibmJmIjoxNzAwMTk1MDM1LCJpYXQiOjE3MDAxOTUwOTV9.TDc5LZ_pfbLxOt8hh0iZIHasDBjYP4thE98k63hmglQ
