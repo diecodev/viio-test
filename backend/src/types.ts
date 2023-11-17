@@ -20,4 +20,5 @@ export type Products = {
 export type EnvVariables = {
   JWT_SECRET: string;
   JWT_COOKIE: string;
+  PRODUCTS_API_URL: string
 };
