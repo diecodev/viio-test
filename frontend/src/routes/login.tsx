@@ -8,13 +8,15 @@ import {
 } from "../utils";
 import { toast } from "sonner";
 import useSWRMutation from "swr/mutation";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 export function LoginRoute() {
   const { trigger, isMutating } = useSWRMutation(
     "/api/users/sign-in",
     swrMutationFetcher,
   );
+
+  const [_, setLocation] = useLocation();
 
   async function submitLogin(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -27,6 +29,8 @@ export function LoginRoute() {
     }
 
     await trigger(valid.fields);
+
+    setLocation("/products");
   }
 
   return (

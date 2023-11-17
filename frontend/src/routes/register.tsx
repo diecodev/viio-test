@@ -6,7 +6,7 @@ import {
   swrMutationFetcher,
   validateLogin,
 } from "../utils";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { toast } from "sonner";
 import { FormEvent } from "react";
 
@@ -15,6 +15,8 @@ export function RegisterRoute() {
     "/api/users/sign-in",
     swrMutationFetcher,
   );
+
+  const [_, setLocation] = useLocation();
 
   async function submitLogin(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -27,6 +29,8 @@ export function RegisterRoute() {
     }
 
     await trigger(valid.fields);
+
+    setLocation("/products");
   }
 
   return (
