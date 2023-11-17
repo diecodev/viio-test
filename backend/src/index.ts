@@ -12,15 +12,18 @@ import { logger } from "hono/logger";
 // routers
 import { router as userRouter } from "./routes/user";
 import { router as productsRouter } from "./routes/products";
+import { JWT_PATH_TO_IGNORE } from "./const";
 
 const app = new Hono();
 
 app.use("*", prettyJSON());
 app.use("*", timing());
 app.use("*", logger());
-// This RegExp match all routes except /user/sign-in
-// The user need the cookie to have total acces
-app.use("^(?!/user/sign-in$).*", async (c, next) => {
+app.use(async (c, next) => {
+  if (JWT_PATH_TO_IGNORE.includes(c.req.path)) {
+    return await next();
+  }
+
   const { JWT_COOKIE: cookie, JWT_SECRET: secret } = env<EnvVariables>(c);
 
   const auth = jwt({
