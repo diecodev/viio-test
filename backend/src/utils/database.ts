@@ -18,6 +18,5 @@ const connectDatabase = async () => {
 const db = await connectDatabase();
 
 const users = db?.collection<Users>(USER_COLLECTION);
-const products = db?.collection<Products>(PRODUCTS_COLLECTION);
 
-export { users, products, db };
+export { users, db };
