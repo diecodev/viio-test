@@ -12,7 +12,7 @@ import { FormEvent } from "react";
 
 export function RegisterRoute() {
   const { trigger, isMutating } = useSWRMutation(
-    "/api/users/sign-in",
+    "/api/user/sign-up",
     swrMutationFetcher,
   );
 

@@ -5,6 +5,8 @@ export const emailRegex = new RegExp(
   /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
 );
 
+export const COOKI_NAME = import.meta.env.VITE_JWT_COOKIE!;
+
 type ValidateLoginReturn =
   | {
       message: string;
@@ -87,5 +89,9 @@ export async function swrMutationFetcher(
   return fetch(url, {
     method: "POST",
     body: JSON.stringify(arg),
+    headers: {
+      accept: "application/json",
+      "Content-Type": "application/json",
+    },
   }).then((res) => res.json());
 }

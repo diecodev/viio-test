@@ -12,7 +12,7 @@ import { Link, useLocation } from "wouter";
 
 export function LoginRoute() {
   const { trigger, isMutating } = useSWRMutation(
-    "/api/users/sign-in",
+    "/api/user/sign-in",
     swrMutationFetcher,
   );
 
