@@ -11,6 +11,7 @@ import {
   getUserByEmail,
   validateUserDoNotExists,
 } from "../utils/user";
+import { cookieOpts } from "../utils/cookies";
 
 export const router = new Hono();
 
@@ -34,7 +35,7 @@ router.post("/sign-in", validateUserCredentials, async (c) => {
 
   const token = await sign({ publicId: user._id }, secret);
 
-  setCookie(c, cookie, token);
+  setCookie(c, cookie, token, cookieOpts);
   return c.json({ success: true }, 200);
 });
 
@@ -70,6 +71,6 @@ router.post("/sign-up", validateUserCredentials, async (c) => {
 
   const token = await sign({ publicId: insertedId }, secret);
 
-  setCookie(c, cookie, token);
+  setCookie(c, cookie, token, cookieOpts);
   return c.json({ success: true }, 201);
 });
