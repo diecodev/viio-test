@@ -4,7 +4,25 @@ export type Users = {
   password: string;
 };
 
-export type Products = {
+// EXTERNAL API CALL TYPES
+export interface ExternalApiResponse {
+  carts: Cart[];
+  total: number;
+  skip: number;
+  limit: number;
+}
+
+export interface Cart {
+  id: number;
+  products: Product[];
+  total: number;
+  discountedTotal: number;
+  userId: number;
+  totalProducts: number;
+  totalQuantity: number;
+}
+
+export interface Product {
   id: number;
   title: string;
   price: number;
@@ -13,12 +31,11 @@ export type Products = {
   discountPercentage: number;
   discountedPrice: number;
   thumbnail: string;
-};
-// END DB TYPES
+}
 
 // ENV VARS TYPES
 export type EnvVariables = {
   JWT_SECRET: string;
   JWT_COOKIE: string;
-  PRODUCTS_API_URL: string
+  PRODUCTS_API_URL: string;
 };
