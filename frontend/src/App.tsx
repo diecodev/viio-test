@@ -6,6 +6,8 @@ import { SWRConfig } from "swr";
 import { COOKI_NAME, swrGetFetcher } from "./utils";
 import { RegisterRoute } from "./routes/register";
 import { ProductRoute } from "./routes/products";
+import { Suspense } from "react";
+import { ProductRouteSkeleton } from "./components/products/skeleton";
 
 function App() {
   const [cookies] = useCookies([COOKI_NAME]);
@@ -32,7 +34,13 @@ function App() {
           )}
         </Route>
         <Route path="/products">
-          {cookies[COOKI_NAME] ? <ProductRoute /> : <Redirect to="/sign-in" />}
+          {cookies[COOKI_NAME] ? (
+            <Suspense fallback={<ProductRouteSkeleton />}>
+              <ProductRoute />
+            </Suspense>
+          ) : (
+            <Redirect to="/sign-in" />
+          )}
         </Route>
       </div>
     </SWRConfig>
