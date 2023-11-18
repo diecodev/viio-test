@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { env } from "hono/adapter";
 import { EnvVariables, ExternalApiResponse } from "../types";
+import { normalizeProducts } from "../utils/products";
 
 export const router = new Hono();
 
@@ -17,11 +18,7 @@ router.get("/", async (c) => {
     r.json()
   )) as ExternalApiResponse;
 
-  const products = apiRes.carts.map((cart) => cart.products);
+  const data = normalizeProducts(apiRes);
 
-  const flattedProducts = products.flat();
-
-  const data = Array.from(new Set(flattedProducts));
-
-  return c.json({ data: data });
+  return c.json(data);
 });
