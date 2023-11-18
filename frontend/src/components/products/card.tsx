@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Product } from "../../types";
+import { toast } from "sonner";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
@@ -24,13 +25,15 @@ export function ProductCard({ product }: { product: Product }) {
           <p>Price: {product.price} USD</p>
           <p>Discount: {product.discountPercentage} %</p>
         </div>
-        <button className="group">
+        <button
+          className="group"
+          onClick={() => toast.success("Item added to wishlist.")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            stroke="currentColor"
-            className="h-6 w-6 fill-none transition-all group-hover:fill-red-400 group-hover:stroke-red-400"
+            className="h-6 w-6 fill-none stroke-black transition-all group-hover:fill-red-400 group-hover:stroke-red-400"
           >
             <path
               strokeLinecap="round"

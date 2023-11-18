@@ -15,7 +15,10 @@ function App() {
   return (
     <SWRConfig value={{ fetcher: swrGetFetcher }}>
       <div className="p-4">
+        {/* this component provides feedback to the user */}
         <Toaster richColors position="bottom-center" />
+
+        {/* root path */}
         <Route path="/">
           {cookies[COOKI_NAME] ? (
             <Redirect to="/products" />
@@ -23,9 +26,13 @@ function App() {
             <Redirect to="/sign-in" />
           )}
         </Route>
+
+        {/* if user is logged in then redirect to /products */}
         <Route path="/sign-in">
           {cookies[COOKI_NAME] ? <Redirect to="/products" /> : <LoginRoute />}
         </Route>
+
+        {/* if user is logged in then redirect to /products and don't let him access to register form */}
         <Route path="/sign-up">
           {cookies[COOKI_NAME] ? (
             <Redirect to="/products" />
@@ -33,6 +40,8 @@ function App() {
             <RegisterRoute />
           )}
         </Route>
+
+        {/* if user is logged in then he can acces to /products route, otherwise redirect to login form */}
         <Route path="/products">
           {cookies[COOKI_NAME] ? (
             <Suspense fallback={<ProductRouteSkeleton />}>
