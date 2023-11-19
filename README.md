@@ -5,8 +5,8 @@ To use this repository, follow the steps below:
 1. Clone the repository to your local machine.
 
 ```bash
-git clone https://github.com/tuusuario/nombre-repo.git
-cd nombre-repo
+git clone https://github.com/diecodev/viio-test.git
+cd viio-test
 ```
 
 2. Ensure that Docker Desktop is installed on your machine.
